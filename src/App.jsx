@@ -8,7 +8,7 @@ export default function App(){
   }
   return(
     <>
-    <button onClick={changeTitle}>Update the first <title></title></button>
+    <button onClick={changeTitle}>Update the first </button>
     <Header title={title}/>
     <Header title='Prince1'/>
     <Header title='Prince2'/>
