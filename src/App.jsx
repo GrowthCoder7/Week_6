@@ -1,15 +1,22 @@
 import { useState } from "react"
 
 export default function App(){
-  const [title, settitle] = useState("Prince")
+  function HeaderTitle(){
+    const [title, settitle] = useState("Prince")
 
-  function changeTitle(){
-    settitle(`The value is ${Math.random()}`)
+    function changeTitle(){
+      settitle(`The value is ${Math.random()}`)
+    }
+    return(
+      <>
+      <button onClick={changeTitle}>Update the first</button>
+      <Header title={title}/>
+      </>
+    )
   }
   return(
     <>
-    <button onClick={changeTitle}>Update the first </button>
-    <Header title={title}/>
+    <HeaderTitle/>
     <Header title='Prince1'/>
     <Header title='Prince2'/>
     </>
