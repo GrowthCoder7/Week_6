@@ -1,28 +1,27 @@
 import { useState } from "react"
+import { memo } from 'react';
 
-export default function App(){
-  function HeaderTitle(){
-    const [title, settitle] = useState("Prince")
+function App() {
+  const [title, settitle] = useState("Prince");
 
-    function changeTitle(){
-      settitle(`The value is ${Math.random()}`)
-    }
-    return(
-      <>
-      <button onClick={changeTitle}>Update the first</button>
-      <Header title={title}/>
-      </>
-    )
+  function changeTitle() {
+    settitle(`The value is ${Math.random()}`)
   }
-  return(
-    <>
-    <HeaderTitle/>
-    <Header title='Prince1'/>
-    <Header title='Prince2'/>
-    </>
+
+  return (
+    <div>
+      <button onClick={changeTitle}>Update title</button>
+      <Header title={title} />
+      <Header title="My name is Prince1" />
+      <Header title="My name is Prince2" />
+    </div>
   )
-  function Header({title}){
-    return(
-    <div>{title}</div>)
-  }
 }
+
+const Header = memo(function ({title}) {
+  return <div>
+    {title}
+  </div>
+})
+
+export default App
