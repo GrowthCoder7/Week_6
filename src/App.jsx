@@ -1,27 +1,23 @@
-import { useState } from "react"
-import { memo } from 'react';
+import React from 'react'
 
-function App() {
-  const [title, settitle] = useState("Prince");
-
-  function changeTitle() {
-    settitle(`The value is ${Math.random()}`)
-  }
-
+const App = () => {
   return (
     <div>
-      <button onClick={changeTitle}>Update title</button>
-      <Header title={title} />
-      <Header title="My name is Prince1" />
-      <Header title="My name is Prince2" />
+      <CardWrap innercomp={<TextComp />} />
+      <CardWrap innercomp={<TextComp2/>} />
     </div>
   )
 }
 
-const Header = memo(function ({title}) {
-  return <div>
-    {title}
-  </div>
-})
+function TextComp(){
+  return <div>Hi there!</div>
+}
+function TextComp2(){
+  return <div>Prince Kumar here</div>
+}
+
+function CardWrap({innercomp}){
+  return <div style={{border:"2px black solid",padding:"15px",margin:"5px",fontWeight:"bold"}}>{innercomp}</div>
+}
 
 export default App
