@@ -1,23 +1,35 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { parseJsonText } from 'typescript'
 
-const App = () => {
+function App() {
+  const [todos, settodos] = useState([])
+  
+
+  useEffect(()=>{
+    setInterval(() => {
+    fetch("https://sum-server.100xdevs.com/todos")
+    .then(async(res)=>{
+      const data=await res.json()
+      settodos(data.todos)
+    })
+  }, 5000);
+  },[]) //Sends out fetch request every 5 secs
+
   return (
-    <div>
-      <CardWrap >
-        {/* <div>Hello there</div> */}
-        <TextComp/>
-      </CardWrap>
-    </div>
+  <div >
+  {todos.map(todo=><Todo key={todo.id} title={todo.title} desc={todo.description} done={String(todo.completed)}/>)}
+  </div>
   )
 }
 
-function CardWrap({children}){
-  console.log(children)
-  return <div style={{border:"2px black solid",padding:"15px",margin:"5px",fontWeight:"bold"}}>{children}</div>
-}
 
-function TextComp(){
-  return <div>Prince this side!</div>
+function Todo({title,desc,done}){
+  return(
+    <>
+    <h1>{title}</h1>
+    <h3>{desc}</h3>
+    <button>{done}</button>
+    </>
+  )
 }
-
 export default App
