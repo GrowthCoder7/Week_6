@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { parseJsonText } from 'typescript'
 
 function App() {
   const [todos, settodos] = useState([])
