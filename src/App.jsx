@@ -3,21 +3,21 @@ import React from 'react'
 const App = () => {
   return (
     <div>
-      <CardWrap innercomp={<TextComp />} />
-      <CardWrap innercomp={<TextComp2/>} />
+      <CardWrap >
+        {/* <div>Hello there</div> */}
+        <TextComp/>
+      </CardWrap>
     </div>
   )
 }
 
-function TextComp(){
-  return <div>Hi there!</div>
-}
-function TextComp2(){
-  return <div>Prince Kumar here</div>
+function CardWrap({children}){
+  console.log(children)
+  return <div style={{border:"2px black solid",padding:"15px",margin:"5px",fontWeight:"bold"}}>{children}</div>
 }
 
-function CardWrap({innercomp}){
-  return <div style={{border:"2px black solid",padding:"15px",margin:"5px",fontWeight:"bold"}}>{innercomp}</div>
+function TextComp(){
+  return <div>Prince this side!</div>
 }
 
 export default App
