@@ -1,0 +1,41 @@
+import React, { useMemo } from 'react'
+import { useState } from 'react'
+
+function App() {
+  const [count, setcount] = useState(0)
+  const [value, setvalue] = useState(1)
+
+  let sum=useMemo(()=>{ //Now when I use counter this expensive process of 'for loop' doesn't run all over, instead remember the prev value
+    let total=0
+      for(let i=0;i<=value;i++){
+        total+=i
+   }
+   console.log('func got called');
+   return total
+  },[value])
+
+  // function total(){
+  //   console.log('func got called!');
+  //   let sum=0
+  //   for(let i=0;i<=value;i++){
+  //     sum+=i
+  //   }
+  //   return(
+  //     <>The sum of {value} no.s is {sum}</>
+  //   )
+  // }
+  
+  
+  return (
+    <>
+    <input type="text" onChange={(e)=>{setvalue(e.target.value)}} />
+    <br />
+    The sum of {value} no.s is {sum}
+    <br />
+    <button onClick={()=>{setcount(count + 1)}}>Counter ({count})</button>
+    </>
+    
+  )
+}
+
+export default App
