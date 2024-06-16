@@ -1,0 +1,20 @@
+import React, { useState,memo, useCallback } from 'react'
+
+function App() {
+  const [count, setcount] = useState(0)
+  const G=useCallback(()=>{function g(){
+
+  }},[])
+  return (
+    <>
+    <button onClick={()=>{setcount(count + 1)}}>Counter {count}</button>
+    <Demo fn={G}/>
+    </>
+  )
+}
+
+const Demo=memo(function Demo({fn}){
+  console.log('Rendered');
+})
+
+export default App
